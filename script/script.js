@@ -146,32 +146,59 @@
       navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
     });
 
-    const track = document.querySelector('.carousel-track');
-const prevButton = document.querySelector('.prev-btn');
-const nextButton = document.querySelector('.next-btn');
-const cards = Array.from(track.children);
+//     const track = document.querySelector('.carousel-track');
+// const prevButton = document.querySelector('.prev-btn');
+// const nextButton = document.querySelector('.next-btn');
+// const cards = Array.from(track.children);
 
-const cardWidth = cards[0].getBoundingClientRect().width + 32; // 32 = gap
+// const cardWidth = cards[0].getBoundingClientRect().width + 32; // 32 = gap
 
-let currentIndex = 0;
+// let currentIndex = 0;
 
-// Move Carousel Function
-function moveCarousel(index) {
-  track.style.transform = 'translateX(' + (-cardWidth * index) + 'px)';
-}
+// // Move Carousel Function
+// function moveCarousel(index) {
+//   track.style.transform = 'translateX(' + (-cardWidth * index) + 'px)';
+// }
 
-// Next Button
-nextButton.addEventListener('click', () => {
-  if (currentIndex < cards.length - 3) { // show 3 cards at a time
-    currentIndex += 3;
-    moveCarousel(currentIndex);
-  }
-});
+// // Next Button
+// nextButton.addEventListener('click', () => {
+//   if (currentIndex < cards.length - 3) { // show 3 cards at a time
+//     currentIndex += 3;
+//     moveCarousel(currentIndex);
+//   }
+// });
 
-// Previous Button
-prevButton.addEventListener('click', () => {
-  if (currentIndex > 0) {
-    currentIndex -= 3;
-    moveCarousel(currentIndex);
-  }
-});
+// // Previous Button
+// prevButton.addEventListener('click', () => {
+//   if (currentIndex > 0) {
+//     currentIndex -= 3;
+//     moveCarousel(currentIndex);
+//   }
+// });
+
+
+
+// Filter Project By Category
+const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    let initialize_category = document.querySelector('[data-filter="web"]');
+    console.log(initialize_category)
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        const filter = button.dataset.filter;
+        console.log(filter)
+        projectCards.forEach(card => {
+          if (card.dataset.category === filter) {
+            card.style.display = 'block';
+          } 
+          else {
+            card.style.display = 'none';
+          }
+
+        });
+
+      })
+    })
+    initialize_category.click()
