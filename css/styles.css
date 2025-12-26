@@ -920,20 +920,15 @@ section {
       width: 85%;
     }
 
-    .active {
-      text-underline-position: under;
-      background: #418841;
-      text-decoration: underline;
-    }
 
-    .project-card {
-      margin: 20px 30px;
-    }
+.project-card {
+  margin: 20px 30px;
+}
 
-    .filter-btn {
-      cursor: pointer;
-      border: none;
-    }
+.filter-btn {
+  cursor: pointer;
+  border: none;
+}
 
 
 .carousel::scroll-button(left):disabled,
@@ -1509,4 +1504,12 @@ footer {
   .stats-grid {
     grid-template-columns: 1fr;
   }
+}
+
+
+
+.active {
+      text-underline-position: under;
+      background: var(--purple);
+      text-decoration: underline;
 }

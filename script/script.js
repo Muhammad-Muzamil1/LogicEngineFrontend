@@ -150,8 +150,8 @@
 
 // Filter Project By Category
 const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-    let initialize_category = document.querySelector('[data-filter="web"]');
+const projectCards = document.querySelectorAll('.project-card');
+let initialize_category = document.querySelector('[data-filter="web"]');
     console.log(initialize_category)
     filterButtons.forEach(button => {
       button.addEventListener('click', () => {
@@ -171,4 +171,4 @@ const filterButtons = document.querySelectorAll('.filter-btn');
 
       })
     })
-    initialize_category.click()
+initialize_category.click()
