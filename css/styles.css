@@ -865,6 +865,7 @@ section {
   /* box-shadow: 0 20px 50px rgba(14, 165, 233, 0.3); */
   box-shadow: 0 20px 50px rgba(14, 165, 233, 0.3);
 }
+
 .team-image {
   width: 150px;
   height: 150px;
@@ -883,7 +884,8 @@ section {
 .team-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+
 }
 
 .team-card h3 {
@@ -912,6 +914,139 @@ section {
 
 /* Projects Section */
 /* Projects Section */
+ .filter-buttons {
+      margin: 20px auto;
+      text-align: center;
+      width: 85%;
+    }
+
+    .active {
+      text-underline-position: under;
+      background: #418841;
+      text-decoration: underline;
+    }
+
+    .project-card {
+      margin: 20px 30px;
+    }
+
+    .filter-btn {
+      cursor: pointer;
+      border: none;
+    }
+
+
+.carousel::scroll-button(left):disabled,
+.carousel::scroll-button(right):disabled {
+  opacity: 0.5;
+  cursor: auto;
+}
+
+.carousel::scroll-button(left),
+.carousel::scroll-button(right) {
+  background-color: var(--purple);
+  border-radius: 50%;
+  border-width: 0;
+  color: white;
+  cursor: pointer;
+  font-family: Consolas;
+  font-size: 3rem;
+  height: 60px;
+  padding-bottom: 0.1rem;
+  position: fixed;
+  position-anchor: --carousel;
+  width: 60px;
+}
+
+.carousel::scroll-button(right) {
+  content: "→";
+  position-area: right center;
+  translate: -50% 0;
+}
+
+.carousel::scroll-button(left) {
+  content: "←";
+  position-area: left center;
+  translate: 50% 0;
+}
+
+.carousel::scroll-marker-group {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.carousel {
+  anchor-name: --carousel;
+  display: flex;
+  gap: 1rem;
+  margin: 3rem auto;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scroll-marker-group: after;
+  width: 100%;
+
+  /* hide scrollbar */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel {
+  overflow-y: hidden;
+}
+
+
+
+.card::scroll-marker {
+  border-radius: 50%;
+  content: "";
+  display: none;
+  height: 1rem;
+  width: 1rem;
+}
+
+.card::scroll-marker:target-current {
+  background-color: var(--purple);
+}
+
+.card {
+  align-content: center;
+  aspect-ratio: 5 / 3;
+  border-radius: 0.5rem;
+  flex: 0 0 20rem;
+  padding: 1rem;
+  scroll-snap-align: start;
+  text-align: center;
+}
+
+@media screen and (max-width:750px) {
+  .filter-btn {
+    margin-top: 20px;
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 550px) {
+  .card::scroll-marker {
+    display: block;
+  }
+
+  .card {
+    flex: 0 0 100%;
+  }
+
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+}
+
 .projects-section {
   padding: 6rem 0;
   background: linear-gradient(180deg, #f0f4f8 0%, #ffffff 100%);
@@ -1302,21 +1437,22 @@ footer {
     top: 80px;
     padding: 10px 0px;
     z-index: 10;
- 
+
     width: 150px;
     justify-content: unset;
   }
-  .light-mode .nav-links  {
+
+  .light-mode .nav-links {
     background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #cbd5e1 100%);
     box-shadow: 0px 0px 8px var(--purple);
-}
+  }
 
-  .dark-mode .nav-links  {
-       background: var(--bg-dark-primary);
+  .dark-mode .nav-links {
+    background: var(--bg-dark-primary);
     box-shadow: 0px 0px 8px var(--purple);
     /* background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #cbd5e1 100%); */
   }
-  
+
   .mobile-toggle {
     display: block;
   }
@@ -1341,22 +1477,26 @@ footer {
 }
 
 @media screen and (max-width:530px) {
-  .nav-actions>a{
+  .nav-actions>a {
     display: none;
   }
-  .contact-grid{
+
+  .contact-grid {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 90%;
   }
- .contact-info{
-  width: 100%;
- }
- .contact-form{
-   width: 100%;
- }
+
+  .contact-info {
+    width: 100%;
+  }
+
+  .contact-form {
+    width: 100%;
+  }
 }
+
 @media (max-width: 480px) {
   .hero h1 {
     font-size: 2rem;
